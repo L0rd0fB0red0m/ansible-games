@@ -1,0 +1,22 @@
+---
+- name: Initial setup of a raspbian system. Requires ssh enabled and pi in sudoers group.
+  hosts: raspbian
+  remote_user: pi
+  become: yes
+
+  tasks:
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
+    - name: Update all packages to their latest version
+      apt:
+        name: "*"
+        state: latest
+
+    - name: Upgrade the OS (apt-get dist-upgrade)
+      apt:
+        upgrade: dist
+
+    - name: Update the rpi-firmware
+      ansible.builtin.command: rpi-update
+    

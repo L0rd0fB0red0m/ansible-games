@@ -1,12 +1,11 @@
-[rpi-cluster]
+[rpi_cluster]
 192.168.1.120
 192.168.1.121
 192.168.1.122
 192.168.1.123
 
-[rpi-standalone]
-192.168.1.129
-192.168.1.130
+[rpi_standalone]
+192.168.1.101
 
 
 [laptop]
@@ -15,6 +14,6 @@
 [desktop]
 192.168.1.120
 
-[raspian]
-rpi-cluster
-rpi-standalone
+
+[raspbian:children]
+rpi_standalone

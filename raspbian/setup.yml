@@ -1,6 +1,8 @@
 ---
 - name: Initial setup of a raspbian system. Requires ssh enabled and pi in sudoers group.
   hosts: raspbian
+  remote_user: pi
+  become: yes
   
   tasks:
     - name: get up-to-date
@@ -9,7 +11,13 @@
         upgrade: yes
         
     - name: Kernel update
-      command: raspi-config update
+      ansible.builtin.command: raspi-config update
       
     - name: Set locale
-      command: ??
+      ansible.builtin.command: kljdf
+
+
+
+    - name: Install rpi-update
+      apt:
+        name: rpi-update
