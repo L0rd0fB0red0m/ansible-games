@@ -1,0 +1,15 @@
+---
+- name: Initial setup of a raspbian system. Requires ssh enabled and pi in sudoers group.
+  hosts: raspbian
+  
+  tasks:
+    - name: get up-to-date
+      apt:
+        update: yes
+        upgrade: yes
+        
+    - name: Kernel update
+      command: raspi-config update
+      
+    - name: Set locale
+      command: ??
